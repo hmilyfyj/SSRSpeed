@@ -13,7 +13,7 @@ RUN cd libsodium* && ./configure && make -j8 && make install
 RUN echo /usr/local/lib > /etc/ld.so.conf.d/usr_local_lib.conf && ldconfig
 
 RUN export MBEDTLS_VER=2.6.0 && \
-	wget https://tls.mbed.org/download/mbedtls-$MBEDTLS_VER-gpl.tgz && \
+	wget https://tls.mbed.org/download/mbedtls-$MBEDTLS_VER-gpl.tgz --no-check-certificate && \
 	tar xvf mbedtls-$MBEDTLS_VER-gpl.tgz && \
 	cd mbedtls-$MBEDTLS_VER && \
 	make SHARED=1 CFLAGS="-O2 -fPIC" && \
