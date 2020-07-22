@@ -7,7 +7,7 @@ RUN apt-get install --no-install-recommends build-essential wget \
 	libc-ares-dev libmbedtls-dev libsodium-dev -y
 
 WORKDIR /dep
-RUN wget https://download.libsodium.org/libsodium/releases/LATEST.tar.gz --no-check-certificate
+RUN wget -LO --no-check-certificate https://download.libsodium.org/libsodium/releases/LATEST.tar.gz
 RUN tar xzvf LATEST.tar.gz
 RUN cd libsodium* && ./configure && make -j8 && make install
 RUN echo /usr/local/lib > /etc/ld.so.conf.d/usr_local_lib.conf && ldconfig
